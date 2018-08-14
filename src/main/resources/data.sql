@@ -1,0 +1,1 @@
+insert into users(id, email, first_name, last_name) values (5, 'bryksy@gmail.com', 'Adam', 'Bravo')
