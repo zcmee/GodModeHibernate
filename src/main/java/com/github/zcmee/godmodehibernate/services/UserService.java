@@ -4,8 +4,10 @@ import com.github.zcmee.godmodehibernate.api.API;
 import com.github.zcmee.godmodehibernate.api.CustomInterfaceUser;
 import com.github.zcmee.godmodehibernate.dao.UserDAO;
 import com.github.zcmee.godmodehibernate.entities.User;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 @Transactional
 public class UserService implements API<User>, CustomInterfaceUser {
     private final UserDAO userDAO;
@@ -20,8 +22,8 @@ public class UserService implements API<User>, CustomInterfaceUser {
     }
 
     @Override
-    public User findById(Long entity) {
-        return null;
+    public User findById(Long entityId) {
+        return userDAO.findById(entityId);
     }
 
     @Override
