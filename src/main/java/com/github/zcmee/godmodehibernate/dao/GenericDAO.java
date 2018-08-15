@@ -1,9 +1,11 @@
 package com.github.zcmee.godmodehibernate.dao;
 
+import com.github.zcmee.godmodehibernate.api.API;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public class GenericDAO<T> implements DAO<T> {
+public abstract class GenericDAO<T> implements API<T> {
     @PersistenceContext
     protected EntityManager entityManager;
     private Class<T> clazz;
@@ -23,9 +25,4 @@ public class GenericDAO<T> implements DAO<T> {
         entityManager.remove(entity);
     }
 
-    @Override
-    public void deleteById(Long entityId) {
-        T entity = findById(entityId);
-        entityManager.remove(entity);
-    }
 }
