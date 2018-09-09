@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 public class UserDAO extends GenericDAO<User> implements CustomInterfaceUser {
 
     @Override
-    public User findByName(String name) {
-        return entityManager.find(User.class, "name");
+    public User findByFirstName(String name) {
+        return findByField("firstName", name);
     }
 
 }

@@ -32,8 +32,8 @@ public class UserService implements API<User>, CustomInterfaceUser {
     }
 
     @Override
-    public User findByName(String name) {
-        return userDAO.findByName(name);
+    public User findByFirstName(String name) {
+        return userDAO.findByFirstName(name);
     }
 
 }
