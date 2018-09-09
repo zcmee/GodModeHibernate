@@ -7,6 +7,8 @@ import com.github.zcmee.godmodehibernate.entities.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class UserService implements API<User>, CustomInterfaceUser {
@@ -19,6 +21,11 @@ public class UserService implements API<User>, CustomInterfaceUser {
     @Override
     public void create(User entity) {
 
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userDAO.findAll();
     }
 
     @Override

@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 public abstract class GenericDAO<T extends Serializable> implements API<T>, BaseDAO<T> {
 
@@ -25,6 +26,16 @@ public abstract class GenericDAO<T extends Serializable> implements API<T>, Base
     @Override
     public void create(T entity) {
         entityManager.persist(entity);
+    }
+
+    @Override
+    public List<T> findAll() {
+        CriteriaBuilder builder = getCriteria();
+        CriteriaQuery<T> criteriaQuery = builder.createQuery(clazz);
+        Root<T> root = criteriaQuery.from(clazz);
+        CriteriaQuery<T> selectAll = criteriaQuery.select(root);
+        TypedQuery<T> query = entityManager.createQuery(selectAll);
+        return query.getResultList();
     }
 
     @Override
